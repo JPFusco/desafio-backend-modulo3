@@ -27,7 +27,7 @@ Seu papel é construir uma RESTful API que permita:
 // Quando é informado um id de usuário que não existe:
 // HTTP Status 404
 {
-    mensagem: "Usuário não encontrado!"
+    "mensagem": "Usuário não encontrado!"
 }
 ```
 
@@ -113,7 +113,7 @@ Essa é a rota que será utilizada para cadastrar um novo usuario no sistema.
     -   Cadastrar o usuário no banco de dados
 
 #### **Exemplo de requisição**
-```json
+```javascript
 // POST /usuario
 {
     "nome": "José",
@@ -125,11 +125,11 @@ Essa é a rota que será utilizada para cadastrar um novo usuario no sistema.
 
 #### **Exemplos de resposta**
 
-```json
+```javascript
 // HTTP Status 200 / 201 / 204
 // Sem conteúdo no corpo (body) da resposta
 ```
-```json
+```javascript
 // HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "Já existe usuário cadastrado com o e-mail informado."
@@ -162,7 +162,7 @@ Essa é a rota que permite o usuario cadastrado realizar o login no sistema.
     -   Criar token de autenticação com id do usuário
 
 #### **Exemplo de requisição**
-```json
+```javascript
 // POST /login
 {
     "email": "jose@lojadasflores.com.br",
@@ -172,13 +172,13 @@ Essa é a rota que permite o usuario cadastrado realizar o login no sistema.
 
 #### **Exemplos de resposta**
 
-```json
+```javascript
 // HTTP Status 200 / 201 / 204
 {
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjIzMjQ5NjIxLCJleHAiOjE2MjMyNzg0MjF9.KLR9t7m_JQJfpuRv9_8H2-XJ92TSjKhGPxJXVfX6wBI"
 }
 ```
-```json
+```javascript
 // HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "Usuário e/ou senha inválido(s)."
@@ -214,14 +214,14 @@ Essa é a rota que será chamada quando o usuario quiser obter os dados do seu p
     **Dica:** neste endpoint podemos fazer uso do status code 401 (Unauthorized).  
 
 #### **Exemplo de requisição**
-```json
+```javascript
 // GET /usuario
 // Sem conteúdo no corpo (body) da requisição
 ```
 
 #### **Exemplos de resposta**
 
-```json
+```javascript
 // HTTP Status 200 / 201 / 204
 {
     "id": 1,
@@ -230,7 +230,7 @@ Essa é a rota que será chamada quando o usuario quiser obter os dados do seu p
     "nome_loja": "Loja das Flores"
 }
 ```
-```json
+```javascript
 // HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "Para acessar este recurso um token de autenticação válido deve ser enviado."
@@ -269,7 +269,7 @@ Essa é a rota que será chamada quando o usuário quiser realizar alterações 
     -   Atualizar as informações do usuário no banco de dados
 
 #### **Exemplo de requisição**
-```json
+```javascript
 // PUT /usuario
 {
     "nome": "José de Abreu",
@@ -281,11 +281,11 @@ Essa é a rota que será chamada quando o usuário quiser realizar alterações 
 
 #### **Exemplos de resposta**
 
-```json
+```javascript
 // HTTP Status 200 / 201 / 204
 // Sem conteúdo no corpo (body) da resposta
 ```
-```json
+```javascript
 // HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "O e-mail informado já está sendo utilizado por outro usuário."
@@ -313,14 +313,14 @@ Essa é a rota que será chamada quando o usuario logado quiser listar todos os 
     -   O endpoint deverá responder com um array de todos os produtos associados ao usuário. Caso não exista nenhum produto associado ao usuário deverá responder com array vazio.
 
 #### **Exemplo de requisição**
-```json
+```javascript
 // GET /produtos
 // Sem conteúdo no corpo (body) da requisição
 ```
 
 #### **Exemplos de resposta**
 
-```json
+```javascript
 // HTTP Status 200 / 201 / 204
 [
     {
@@ -345,11 +345,11 @@ Essa é a rota que será chamada quando o usuario logado quiser listar todos os 
     },
 ]
 ```
-```json
+```javascript
 // HTTP Status 200 / 201 / 204
 []
 ```
-```json
+```javascript
 // HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "Para acessar este recurso um token de autenticação válido deve ser enviado."
@@ -376,14 +376,14 @@ Essa é a rota que será chamada quando o usuario logado quiser obter um dos seu
     -   Validar se existe produto para o id enviado como parâmetro na rota e se este produto pertence ao usuário logado.  
 
 #### **Exemplo de requisição**
-```json
+```javascript
 // GET /produtos/44
 // Sem conteúdo no corpo (body) da requisição
 ```
 
 #### **Exemplos de resposta**
 
-```json
+```javascript
 // HTTP Status 200 / 201 / 204
 {
     "id": 1,
@@ -396,13 +396,13 @@ Essa é a rota que será chamada quando o usuario logado quiser obter um dos seu
     "imagem": "https://bit.ly/3ctikxq"
 }
 ```
-```json
+```javascript
 // HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "Não existe produto cadastrado com ID 44."
 }
 ```
-```json
+```javascript
 // HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "O usuário logado não tem permissão para acessar este produto."
@@ -441,7 +441,7 @@ Essa é a rota que será utilizada para cadastrar um produto associado ao usuár
     -   Cadastrar o produto associado ao usuário logado.  
 
 #### **Exemplo de requisição**
-```json
+```javascript
 // POST /produtos
 {
     "nome": "Camisa preta",
@@ -455,17 +455,17 @@ Essa é a rota que será utilizada para cadastrar um produto associado ao usuár
 
 #### **Exemplos de resposta**
 
-```json
+```javascript
 // HTTP Status 200 / 201 / 204
 // Sem conteúdo no corpo (body) da resposta
 ```
-```json
+```javascript
 // HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "O preço do produto deve ser informado."
 }
 ```
-```json
+```javascript
 // HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "Para cadastrar um produto, o usuário deve estar autenticado."
@@ -504,7 +504,7 @@ Essa é a rota que será chamada quando o usuario logado quiser atualizar um dos
     -   Atualizar o produto no banco de dados
 
 #### **Exemplo de requisição**
-```json
+```javascript
 // PUT /produtos/2
 {
     "nome": "Calça jeans preta",
@@ -518,11 +518,11 @@ Essa é a rota que será chamada quando o usuario logado quiser atualizar um dos
 
 #### **Exemplos de resposta**
 
-```json
+```javascript
 // HTTP Status 200 / 201 / 204
 // Sem conteúdo no corpo (body) da resposta
 ```
-```json
+```javascript
 // HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "O usuário autenticado não ter permissão para alterar este produto."
@@ -550,24 +550,24 @@ Essa é a rota que será chamada quando o usuario logado quiser excluir um dos s
     -   Excluir o produto no banco de dados.  
 
 #### **Exemplo de requisição**
-```json
+```javascript
 // DELETE /produtos/88
 // Sem conteúdo no corpo (body) da requisição
 ```
 
 #### **Exemplos de resposta**
 
-```json
+```javascript
 // HTTP Status 200 / 201 / 204
 // Sem conteúdo no corpo (body) da resposta
 ```
-```json
+```javascript
 // HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "Não existe produto para o ID 88."
 }
 ```
-```json
+```javascript
 // HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "O usuário autenticado não tem permissão para excluir este produto."
@@ -598,14 +598,14 @@ Na funcionalidade de listagem de produtos do usuário logado (**GET /produtos**)
     -   O endpoint deverá responder com um array de todos os produtos associados ao usuário que sejam da categoria passada no parâmetro query. Caso não exista nenhum produto associado ao usuário deverá responder com array vazio.
 
 #### **Exemplo de requisição**
-```json
+```javascript
 // GET /produtos?categoria=camisas
 // Sem conteúdo no corpo (body) da requisição
 ```
 
 #### **Exemplos de resposta**
 
-```json
+```javascript
 // HTTP Status 200 / 201 / 204
 [
     {
@@ -630,11 +630,11 @@ Na funcionalidade de listagem de produtos do usuário logado (**GET /produtos**)
     },
 ]
 ```
-```json
+```javascript
 // HTTP Status 200 / 201 / 204
 []
 ```
-```json
+```javascript
 // HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "Para acessar este recurso um token de autenticação válido deve ser enviado."
@@ -645,22 +645,20 @@ Na funcionalidade de listagem de produtos do usuário logado (**GET /produtos**)
 
 ## **Aulas úteis:**  
 
-- [Modelagem de Dados](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/15/09/2021/aula/286817a4-f5bd-44c5-a799-584ffd9a3335/a11d1306-a610-4522-a83e-4fde0d3ebdfa)
-- [A relação um para muitos](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/15/09/2021/aula/286817a4-f5bd-44c5-a799-584ffd9a3335/85adbb11-8081-4135-a13c-6dc5284ba5e5)
-- [Criando tabelas com relacionamentos](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/15/09/2021/aula/286817a4-f5bd-44c5-a799-584ffd9a3335/1fbb8761-9fd9-441c-96fd-08bac9f1fdf4)
-- [CRUD SQL](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/13/09/2021/aula/63e840be-432d-457b-99f5-cfa119008515/824d2698-ac2a-4d5f-840a-7b69384a7f94)
-- [Programação Assíncrona](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/04/08/2021/aula/fbeffa02-bf0d-49f1-927b-fb7b269f31b3/8bdff314-8386-43f8-8317-3cae52480be2)
-- [Funções async com await](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/04/08/2021/aula/fbeffa02-bf0d-49f1-927b-fb7b269f31b3/deb4c519-5b06-49d2-9245-6a4306b24b8a)
-- [Revisão Programação Assíncrona](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/06/08/2021/aula/9b680362-ee3b-45b0-9573-dc72427d7e37/)
-- [Conexão NodeJs com PostgreSQL](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/20/09/2021/aula/c5d2fbfa-d1cc-4b5d-a952-3f2d39f20013/25e45164-6f2e-4c83-a7f0-9a392c0f61e8)
-- [Configurando conexão com o banco](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/20/09/2021/aula/c5d2fbfa-d1cc-4b5d-a952-3f2d39f20013/328f07c0-bd88-488f-864e-3e401d4fca78)
-- [Executando comandos SQL a partir da API](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/20/09/2021/aula/c5d2fbfa-d1cc-4b5d-a952-3f2d39f20013/92f60ffe-15a4-4638-84f2-63ce25d02c08)
-- [Autenticação e Criptografia](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/22/09/2021/aula/416b67c0-7b88-4ec1-b1b3-e405414d227c/353d51ad-6ecf-4e2a-878e-b43d2d662d81)
-- [Revisão Módulo 3](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/27/09/2021/aula/653eb988-7f3d-490c-9649-d66cb76db7ae/4da79921-84a0-4dfc-b8ab-cc01cc723fbf)
-- [Login retornando token](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/27/09/2021/aula/653eb988-7f3d-490c-9649-d66cb76db7ae/c4fffddd-bb08-437b-97f6-453e4b2f213d)
-- [Filtro de autenticação lendo token do header](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/27/09/2021/aula/653eb988-7f3d-490c-9649-d66cb76db7ae/6480cf9b-d83a-4dc0-b0c3-6a9943b3b326)
-- [Utilizando recursos com token no header](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/27/09/2021/aula/653eb988-7f3d-490c-9649-d66cb76db7ae/3b009560-48dd-4d43-ba67-96ad4a6bfd52)
-- [Revisão ao vivo Módulo 3](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/29/09/2021/aula/3bc2d9c5-0f0e-4d8d-beee-17e2419c2212/)
+- [Modelagem de Dados](https://plataforma.cubos.academy/curso/90bb4fdd-85c7-4f90-9753-38c264a80382/data/18/11/2021/aula/c458dfb4-a826-4570-9fab-ed82326cb3f9/e99dd1fd-bfec-4204-becd-fad43ea20c91)
+- [A relação um para muitos](https://plataforma.cubos.academy/curso/90bb4fdd-85c7-4f90-9753-38c264a80382/data/18/11/2021/aula/c458dfb4-a826-4570-9fab-ed82326cb3f9/c26e54bf-af6e-44e9-abd3-150bde61f1bc)
+- [Criando tabelas com relacionamentos](https://plataforma.cubos.academy/curso/90bb4fdd-85c7-4f90-9753-38c264a80382/data/18/11/2021/aula/c458dfb4-a826-4570-9fab-ed82326cb3f9/6a96759e-8ddd-428f-ab8d-5d7214181cf0)
+- [CRUD SQL](https://plataforma.cubos.academy/curso/90bb4fdd-85c7-4f90-9753-38c264a80382/data/16/11/2021/aula/0cdd1159-77c4-426b-811c-aead4ec30a8d/81ee786d-751c-4a9b-9eb2-43954356117e)
+- [Programação Assíncrona](https://plataforma.cubos.academy/curso/90bb4fdd-85c7-4f90-9753-38c264a80382/data/07/10/2021/aula/8a67797b-ddc6-4ff9-a3d4-9ea344dbe30f/5093d0d4-985a-4019-a6dc-bc98ad851f08)
+- [Funções async com await](https://plataforma.cubos.academy/curso/90bb4fdd-85c7-4f90-9753-38c264a80382/data/07/10/2021/aula/8a67797b-ddc6-4ff9-a3d4-9ea344dbe30f/9d0f2598-bdf2-45ab-b519-fcc4bfa66aee)
+- [Conexão NodeJs com PostgreSQL](https://plataforma.cubos.academy/curso/90bb4fdd-85c7-4f90-9753-38c264a80382/data/23/11/2021/aula/6424761e-b119-4369-82b3-c0a9203cf605/24fb6058-0a28-4b17-988b-68d9109ec3da)
+- [Configurando conexão com o banco](https://plataforma.cubos.academy/curso/90bb4fdd-85c7-4f90-9753-38c264a80382/data/23/11/2021/aula/6424761e-b119-4369-82b3-c0a9203cf605/28b080c1-ef9b-4bd8-952c-7127ef6a2c7b)
+- [Executando comandos SQL a partir da API](https://plataforma.cubos.academy/curso/90bb4fdd-85c7-4f90-9753-38c264a80382/data/23/11/2021/aula/6424761e-b119-4369-82b3-c0a9203cf605/a674d9b5-0250-4c70-92be-c7ff7502f1df)
+- [Autenticação e Criptografia](https://plataforma.cubos.academy/curso/90bb4fdd-85c7-4f90-9753-38c264a80382/data/25/11/2021/aula/404170bf-7785-45a6-8aaa-867a71bfa7d6/677147c3-e2eb-4aca-b4c9-83b199f2ad84)
+- [Revisão Módulo 3](https://plataforma.cubos.academy/curso/90bb4fdd-85c7-4f90-9753-38c264a80382/data/30/11/2021/aula/c02c95b3-29a6-4c14-bc8c-81883bdc78f5/6167a2ef-0193-4172-91b5-20996b70691f)
+- [Login retornando token](https://plataforma.cubos.academy/curso/90bb4fdd-85c7-4f90-9753-38c264a80382/data/30/11/2021/aula/c02c95b3-29a6-4c14-bc8c-81883bdc78f5/1230b372-0fc3-4f02-87d5-d282895070f9)
+- [Filtro de autenticação lendo token do header](https://plataforma.cubos.academy/curso/90bb4fdd-85c7-4f90-9753-38c264a80382/data/30/11/2021/aula/c02c95b3-29a6-4c14-bc8c-81883bdc78f5/7ff4dbfb-0312-4f21-904f-6b6da823861b)
+- [Utilizando recursos com token no header](https://plataforma.cubos.academy/curso/90bb4fdd-85c7-4f90-9753-38c264a80382/data/30/11/2021/aula/c02c95b3-29a6-4c14-bc8c-81883bdc78f5/24fec911-895c-467b-b192-1d65b97d02b0)
 
 ---
 
