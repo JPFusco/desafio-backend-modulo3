@@ -69,7 +69,7 @@ const logarUsuario = async (req, res) => {
         }
 
         const token = jwt.sign({ id: usuario.id }, JWT_SECRET);
-        return res.status(200).json({ "mensagem": token });
+        return res.status(200).json({ token });
     } catch (error) {
         return res.status(400).json(error);
     }
