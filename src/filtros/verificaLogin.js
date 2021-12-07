@@ -1,17 +1,15 @@
 const conexao = require("../conexao");
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const JWT_SECRET = require("../jwt-secret");
 
 const verificaLogin = async (req, res, next) => {
     const { authorization } = req.headers;
+    const token = authorization.replace("Bearer", "").trim();
 
-    if (!authorization) {
+    if (!token) {
         return res.status(401).json({ "mensagem": "Para acessar este recurso um token de autenticação válido deve ser enviado." });
     }
-
-    const token = authorization.replace("Bearer ", "");
 
     try {
         const { id } = jwt.verify(token, JWT_SECRET);
